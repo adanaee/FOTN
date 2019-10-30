@@ -1,0 +1,6 @@
+*! TOC File
+v 3
+d Finance of the Nations Project Page
+
+p Contains: jsonio A JSON serializer for Stata by wbuchanan 
+p Contains: getmetadata Posts data with REST API
