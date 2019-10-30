@@ -23,13 +23,8 @@ d Requires: Stata version 13.1
 d
 d Distribution-Date: 20191030
 d
-d Author(s): Billy Buchanan
-d         	 Director
-d         	 Office of Data, Research, and Accountability
-d         	 Fayette County Public Schools
-d
-d 			 Andy Danaee
-d            University of Toronto
+d Author(s): Andy Danaee
+d                  University of Toronto
 d
 d
 d Support: email andishehdanaee @t gmail [dot] com
@@ -38,3 +33,4 @@ f jsoniolite.ado
 f jsoniolite.sthlp
 f jsoniolite.jar
 f getmetadata.ado
+f getmetadata.sthlp
