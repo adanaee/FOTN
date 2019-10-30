@@ -1,1 +1,2 @@
-# FOTN
+# Finances of the Nations Project Page
+...
