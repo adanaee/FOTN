@@ -1,3 +1,5 @@
+cap prog drop getmetadata
+
 prog def getmetadata, rclass
 	version 13.0
 	args url cube savelocation
