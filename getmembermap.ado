@@ -39,15 +39,13 @@ prog def getmembermap, rclass
 	* Download and parse the metadata to key/value pairs
 	* ==================================================
 
-	* Check if .json file exists in `temp'
-	capture confirm file "`temp'/`output_file'"
-	if (_rc != 0){
-		getmetadata `URL' `cube' "`temp'/`output_file'"		// POST request
-	}
+	* POST data to URL and save it
+	getmetadata `URL' `cube' "`temp'/`output_file'"
+
 	* Parse the .json file to key/value pairs
-	jsoniolite kv, file("`temp'/`output_file'") nourl		// parse jsonio
+	jsoniolite kv, file("`temp'/`output_file'") nourl
 	split key, p("/")
-	save "`temp'\json_data.dta", replace 					// save the data
+	save "`temp'\json_data.dta", replace
 
 	* Display the metadata of the table
 	* =================================
