@@ -19,28 +19,21 @@ prog def getmembermap, rclass
 	args cube
 	
 	// Drop the variables from memory if they exists
+	capture drop dimensionName dimensionLevel
 	capture drop dimensionLevel memberId memberName parentId treelevel
 	
 	* Define the name of JSON output file
 	local output_file "output.json"
 	* Define the directory
 	local temp `c(pwd)'
-
-	* Indicator for running specific blocks of code
-	local getjson = 1 // Set stage1 to 1 if metadata not saved yet
-	local main = 1 // set to 1 to run everything
-	local bucket1 = 0 // set to 1 to display dimension information 
-
+	
 	local URL "https://www150.statcan.gc.ca/t1/wds/rest/getCubeMetadata"
-
-	* Define the table ID or cube
-	local cube "`cube'"
 
 	* Download and parse the metadata to key/value pairs
 	* ==================================================
 
 	* POST data to URL and save it
-	getmetadata `URL' `cube' "`temp'/`output_file'"
+	getmetadata `URL' "`cube'" "`temp'/`output_file'"
 
 	* Parse the .json file to key/value pairs
 	jsoniolite kv, file("`temp'/`output_file'") nourl
@@ -97,7 +90,7 @@ prog def getmembermap, rclass
 	}
 	
 	save "`temp'\json_data_v2.dta", replace
-	di "`cube'"
-	li *
+	li *, compress
+	di "Cube: `cube'"
 	
 end
