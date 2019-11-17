@@ -34,3 +34,5 @@ f jsoniolite.sthlp
 f jsoniolite.jar
 f getmetadata.ado
 f getmetadata.sthlp
+f getdims.ado
+f getmembermap.ado
