@@ -4,7 +4,7 @@
 * 
 * This program displays the description and number  of each dimension in the table
 
-* Output: json_data.dta
+* Output: <cube_number>.dta
 *
 * Third-party packages: net inst jsoniolite, from("https://adanaee.github.io/FOTN/") replace force
 * ==============================================================================
@@ -38,12 +38,12 @@ prog def getdims, rclass
 	* Parse the .json file to key/value pairs
 	jsoniolite kv, file("`temp'/`output_file'") nourl
 	split key, p("/")
-	save "`temp'\json_data.dta", replace
+	save "`temp'\`cube'_dimNames.dta", replace
 
 	* Display the metadata of the table
 	* =================================
 	
-	use "`temp'\json_data.dta", replace
+	use "`temp'\`cube'_dimNames.dta", replace
 	keep if key4=="dimensionNameEn"
 	drop key
 	drop key1 key2 key4 key5 key6
@@ -54,7 +54,7 @@ prog def getdims, rclass
 	
 	destring dimensionLevel, replace
 	sort dimensionLevel
-	save "`temp'\json_data.dta", replace
+	save "`temp'\`cube'_dimNames.dta", replace
 	li *, compress
 	di "Cube: `cube'"
 	
