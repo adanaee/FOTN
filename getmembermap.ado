@@ -38,12 +38,12 @@ prog def getmembermap, rclass
 	* Parse the .json file to key/value pairs
 	jsoniolite kv, file("`temp'/`output_file'") nourl
 	split key, p("/")
-	save "`temp'\`cube'_MetaData.dta", replace
+	save "`temp'/`cube'_MetaData.dta", replace
 
 	* Display the metadata of the table
 	* =================================
 
-	use "`temp'\`cube'_MetaData.dta", replace /* original data file */
+	use "`temp'/`cube'_MetaData.dta", replace /* original data file */
 
 	* This part cleans up the data by creating/dropping/renaming the variables
 	
@@ -89,7 +89,7 @@ prog def getmembermap, rclass
 		local i = `i' + 1
 	}
 	
-	save "`temp'\`cube'_MetaData.dta", replace
+	save "`temp'/`cube'_MetaData.dta", replace
 	li *, compress
 	di "Cube: `cube'"
 	
