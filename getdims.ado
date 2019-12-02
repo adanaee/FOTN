@@ -38,12 +38,7 @@ prog def getdims, rclass
 	* Parse the .json file to key/value pairs
 	jsoniolite kv, file("`temp'/`output_file'") nourl
 	split key, p("/")
-	save "`temp'/`cube'_dimNames.dta", replace
 
-	* Display the metadata of the table
-	* =================================
-	
-	use "`temp'/`cube'_dimNames.dta", replace
 	keep if key4=="dimensionNameEn"
 	drop key
 	drop key1 key2 key4 key5 key6
@@ -54,7 +49,6 @@ prog def getdims, rclass
 	
 	destring dimensionLevel, replace
 	sort dimensionLevel
-	save "`temp'/`cube'_dimNames.dta", replace
 	li *, compress
 	di "Cube: `cube'"
 	
